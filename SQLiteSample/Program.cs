@@ -11,6 +11,7 @@ namespace SQLiteSample
             sqlite_conn = CreateConnection();
             CreateTable(sqlite_conn);
             InsertData(sqlite_conn);
+            ReadData(sqlite_conn);
         }
 
         static SQLiteConnection CreateConnection()

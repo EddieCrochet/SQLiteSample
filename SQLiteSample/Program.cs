@@ -28,7 +28,7 @@ namespace SQLiteSample
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine("There is no database connection happening: {0}: ", ex);
             }
             return sqlite_conn;
         }

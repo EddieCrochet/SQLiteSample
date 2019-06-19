@@ -58,6 +58,9 @@ namespace SQLiteSample
 
             sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, col2) VALUES ('Test3 Text3', 3);";
             sqlite_cmd.ExecuteNonQuery();
+            sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES ('This is my text 4 text', 4)";
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES ('Howdy Text 5', 5)";
         }
 
         static void ReadData(SQLiteConnection conn)

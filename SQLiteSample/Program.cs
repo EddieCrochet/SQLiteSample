@@ -19,7 +19,6 @@ namespace SQLiteSample
             SQLiteConnection sqlite_conn;
             //create a new database connection
             sqlite_conn = new SQLiteConnection("Data Source=database.db;Version=3;New=True;Compress=True;");
-            CreateTable(sqlite_conn);
 
             //Now, open the connection
             try

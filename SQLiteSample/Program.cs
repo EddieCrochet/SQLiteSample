@@ -58,6 +58,8 @@ namespace SQLiteSample
 
         static void InsertData(SQLiteConnection conn)
         {
+            //already called this method - 
+            //either delete all anreplace or write and call new method for different datum
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = "INSERT INTO SampleTable (Col1, Col2) VALUES ('Test Text', 1);";
@@ -73,6 +75,12 @@ namespace SQLiteSample
             sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES ('Howdy Text 5', 5)";
             sqlite_cmd.ExecuteNonQuery();
+        }
+
+        static void DeleteDuplicates(SQLiteConnection conn)
+        {
+            SQLiteCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "DELETE"
         }
 
         static void ReadData(SQLiteConnection conn)
@@ -94,7 +102,7 @@ namespace SQLiteSample
             cmd = conn.CreateCommand();
             //need a new sqlitecommand for every entry!!
 
-            cmd.CommandText = "SELECT * FROM SampleTable1";
+            cmd.CommandText = "SELECT Col1 FROM SampleTable1 ORDER BY Col2 DESC";
             Console.WriteLine("SampleTable1 holds :");
             sqlite_datareader = cmd.ExecuteReader();
             while(sqlite_datareader.Read())

@@ -69,6 +69,7 @@ namespace SQLiteSample
             sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES ('This is my text 4 text', 4)";
             sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES ('Howdy Text 5', 5)";
+            sqlite_cmd.ExecuteNonQuery();
         }
 
         static void ReadData(SQLiteConnection conn)
@@ -85,8 +86,12 @@ namespace SQLiteSample
                 Console.WriteLine(myreader);
             }
 
-            sqlite_cmd.CommandText = "SELECT * FROM SampleTable1";
-            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            SQLiteCommand cmd;
+            cmd = conn.CreateCommand();
+            //need a new sqlitecommand for every entry!!
+
+            cmd.CommandText = "SELECT * FROM SampleTable1";
+            sqlite_datareader = cmd.ExecuteReader();
             while(sqlite_datareader.Read())
             {
                 string myNewReader = sqlite_datareader.GetString(0);

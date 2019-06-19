@@ -84,6 +84,15 @@ namespace SQLiteSample
                 string myreader = sqlite_datareader.GetString(0);
                 Console.WriteLine(myreader);
             }
+
+            sqlite_cmd.CommandText = "SELECT * FROM SampleTable1";
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while(sqlite_datareader.Read())
+            {
+                string myNewReader = sqlite_datareader.GetString(0);
+                Console.WriteLine(myNewReader);
+            }
+
             conn.Close();
         }
     }

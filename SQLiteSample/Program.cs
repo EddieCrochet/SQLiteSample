@@ -9,8 +9,11 @@ namespace SQLiteSample
         {
             SQLiteConnection sqlite_conn;
             sqlite_conn = CreateConnection();
+
             //CreateTable(sqlite_conn);
             //InsertData(sqlite_conn);
+            //only need to call the above two methods the first time we run them through
+
             ReadData(sqlite_conn);
         }
 
@@ -77,13 +80,14 @@ namespace SQLiteSample
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT * FROM SampleTable";
-            
+            sqlite_cmd.CommandText = "SELECT DISTINCT * FROM SampleTable";
+
+            Console.WriteLine("SampleTable holds: ");
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while(sqlite_datareader.Read())
             {
                 string myreader = sqlite_datareader.GetString(0);
-                Console.WriteLine(myreader);
+                Console.WriteLine("\t{0}", myreader);
             }
 
             SQLiteCommand cmd;
@@ -91,11 +95,12 @@ namespace SQLiteSample
             //need a new sqlitecommand for every entry!!
 
             cmd.CommandText = "SELECT * FROM SampleTable1";
+            Console.WriteLine("SampleTable1 holds :");
             sqlite_datareader = cmd.ExecuteReader();
             while(sqlite_datareader.Read())
             {
                 string myNewReader = sqlite_datareader.GetString(0);
-                Console.WriteLine(myNewReader);
+                Console.WriteLine("\t{0}", myNewReader);
             }
 
             conn.Close();

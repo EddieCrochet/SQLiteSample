@@ -45,6 +45,15 @@ namespace SQLiteSample
             sqlite_cmd.ExecuteNonQuery();
         }
 
+        static void CreateDestinyTable(SQLiteConnection conn)
+        {
+            SQLiteCommand cmd;
+            string makeTable = "CREATE TABLE myTable (Col1 VARCHAR(20), Col2 VARCHAR(20), Col3 INT)";
+            cmd = conn.CreateCommand();
+            cmd.CommandText = makeTable;
+            cmd.ExecuteNonQuery();
+        }
+
         static void InsertData(SQLiteConnection conn)
         {
             SQLiteCommand sqlite_cmd;

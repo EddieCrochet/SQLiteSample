@@ -80,7 +80,7 @@ namespace SQLiteSample
         static void DeleteDuplicates(SQLiteConnection conn)
         {
             SQLiteCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "DELETE"
+            //need to write code to delete duplicates
         }
 
         static void ReadData(SQLiteConnection conn)
